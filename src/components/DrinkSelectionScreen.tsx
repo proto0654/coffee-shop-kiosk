@@ -122,15 +122,15 @@ const DrinkSelectionScreen: React.FC = () => {
   const getCategoryImage = (category: string) => {
     switch (category) {
       case 'coffee':
-        return '/images/coffee-cat.png';
+        return '/images/icons/coffee-cat.png';
       case 'tea':
-        return '/images/tea-cat.png';
+        return '/images/icons/tea-cat.png';
       case 'milkshake':
-        return '/images/coctail-cat.png';
+        return '/images/icons/coctail-cat.png';
       case 'softDrink':
-        return '/images/drinks-cat.png';
+        return '/images/icons/drinks-cat.png';
       default:
-        return '/images/coffee-cat.png';
+        return '/images/icons/coffee-cat.png';
     }
   };
 
