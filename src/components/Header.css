@@ -6,8 +6,22 @@
   align-items: center;
   padding: 0 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
+  background-color: transparent;
   z-index: 100;
+  position: relative;
+}
+
+.header-arrow-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-image: url('./header-arrow-bg.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  z-index: -1;
 }
 
 .header-left {
@@ -47,4 +61,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.header-contact {
+  display: flex;
+  align-items: center;
+}
+
+.phone-button {
+  background-color: #FFD600;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.phone-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.login-register {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  white-space: nowrap;
 } 

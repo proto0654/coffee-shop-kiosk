@@ -4,9 +4,9 @@
   "description": "React-based web interface for a self-service coffee shop kiosk",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -18,9 +18,16 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@tailwindcss/postcss": "^4.1.4",
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7"
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^10.1.5",
+    "tailwindcss": "^4.1.4"
   },
   "eslintConfig": {
     "extends": [
@@ -40,4 +47,4 @@
       "last 1 safari version"
     ]
   }
-} 
+}

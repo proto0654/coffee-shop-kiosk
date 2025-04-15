@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './CardPaymentScreen.css';
 import Header from './Header';
 import { useDrink } from '../context/DrinkContext';
 import { useEmulator } from '../context/EmulatorContext';
+import Button from './common/Button';
 
 // SVG для иконки банковской карты
 const CardIcon: React.FC = () => (
@@ -122,44 +122,46 @@ const CardPaymentScreen: React.FC = () => {
   }
 
   return (
-    <div className={`card-payment-screen ${selectedCategory === 'coffee' ? 'coffee-bg' : 'soft-drinks-bg'}`}>
+    <div className={`w-full h-full flex flex-col ${selectedCategory === 'coffee' ? 'bg-coffee' : 'bg-white'} transition-colors duration-300`}>
       <Header
         title="Оплата картой"
         showBackButton={true}
         onBackClick={handleCancel}
       />
 
-      <div className="card-payment-content">
+      <div className="flex-1 flex flex-col items-center justify-center p-5 text-center">
         {paymentStatus === 'pending' && (
           <>
             <CardIcon />
-            <h2 className="payment-message">{paymentMessage}</h2>
-            <p className="payment-amount">Сумма: {calculateTotalPrice()}₽</p>
+            <h2 className="text-2xl font-semibold my-5">{paymentMessage}</h2>
+            <p className="text-lg mb-8">Сумма: {calculateTotalPrice()}₽</p>
           </>
         )}
 
         {paymentStatus === 'error' && (
           <>
             <ErrorIcon />
-            <h2 className="payment-message error-message">Оплата не прошла</h2>
-            <p className="payment-instruction">Убедитесь, что на карте достаточно средств, и попробуйте еще раз</p>
-            <button 
-              className="primary-button retry-button"
+            <h2 className="text-2xl font-semibold my-5 text-red-600">Оплата не прошла</h2>
+            <p className="text-base text-gray-600 mb-8 max-w-sm">Убедитесь, что на карте достаточно средств, и попробуйте еще раз</p>
+            <Button 
+              variant="primary"
               onClick={handleRetry}
               disabled={isProcessing}
+              className="mb-5 w-full"
             >
               Попробовать еще раз
-            </button>
+            </Button>
           </>
         )}
 
-        <button
-          className="secondary-button cancel-button"
+        <Button
+          variant="secondary"
           onClick={handleCancel}
           disabled={isProcessing && paymentStatus === 'pending'}
+          className="w-full mt-auto"
         >
           Отмена
-        </button>
+        </Button>
       </div>
     </div>
   );

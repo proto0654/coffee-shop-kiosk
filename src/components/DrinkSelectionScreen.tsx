@@ -52,7 +52,11 @@ const DrinkSelectionScreen: React.FC = () => {
   // Обработчик выбора напитка
   const handleDrinkSelect = (drink: any) => {
     selectDrink(drink);
-    setShowSizeModal(true);
+    // Небольшая задержка перед показом модального окна
+    // чтобы браузер успел отрисовать начальное состояние для анимации
+    setTimeout(() => {
+        setShowSizeModal(true);
+    }, 0);
   };
   
   // Обработчик выбора размера

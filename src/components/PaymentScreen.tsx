@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PaymentScreen.css';
 import Header from './Header';
 import { useDrink } from '../context/DrinkContext';
 
@@ -44,37 +43,37 @@ const PaymentScreen: React.FC = () => {
   };
 
   return (
-    <div className={`payment-method-screen ${selectedCategory === 'coffee' ? 'coffee-bg' : 'soft-drinks-bg'}`}>
+    <div className={`w-full h-full flex flex-col ${selectedCategory === 'coffee' ? 'bg-coffee' : 'bg-white'} transition-colors duration-300`}>
       <Header
         title="Выбор напитка"
         showBackButton={true}
         onBackClick={() => navigate('/customize')}
       />
 
-      <div className="payment-method-content">
-        <h2 className="payment-title">Выберите способ оплаты</h2>
-        <p className="payment-subtitle">Сумма к оплате: {calculateTotalPrice()}₽</p>
+      <div className="flex-1 flex flex-col items-center p-5">
+        <h2 className="text-2xl font-semibold mb-2.5 text-center">Выберите способ оплаты</h2>
+        <p className="text-lg mb-8 text-center text-gray-700">Сумма к оплате: {calculateTotalPrice()}₽</p>
 
-        <div className="payment-methods">
+        <div className="flex flex-col w-full gap-5 mb-8">
           <div
-            className="payment-method-card"
+            className="flex items-center p-5 bg-white rounded-xl shadow-md cursor-pointer hover:transform hover:-translate-y-0.5 hover:shadow-lg transition duration-200"
             onClick={() => handlePaymentMethodSelect('card')}
           >
             <CardPaymentIcon />
-            <span className="payment-method-name">Оплата картой</span>
+            <span className="text-lg font-medium ml-4">Оплата картой</span>
           </div>
 
           <div
-            className="payment-method-card"
+            className="flex items-center p-5 bg-white rounded-xl shadow-md cursor-pointer hover:transform hover:-translate-y-0.5 hover:shadow-lg transition duration-200"
             onClick={() => handlePaymentMethodSelect('cash')}
           >
             <CashPaymentIcon />
-            <span className="payment-method-name">Оплата наличными</span>
+            <span className="text-lg font-medium ml-4">Оплата наличными</span>
           </div>
         </div>
 
         <button
-          className="secondary-button cancel-button"
+          className="w-full py-4 bg-white text-black rounded border border-gray-200 hover:bg-gray-50 transition-colors duration-200 mt-auto"
           onClick={() => navigate('/customize')}
         >
           Отмена

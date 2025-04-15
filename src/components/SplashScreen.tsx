@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SplashScreen.css';
 
 // SVG для кофейных зерен
 const CoffeeBean: React.FC<{ className: string }> = ({ className }) => (
@@ -44,41 +43,42 @@ const SplashScreen: React.FC = () => {
   };
 
   return (
-    <div className="splash-screen coffee-bg" onClick={handleClick}>
+    <div className="w-full h-full bg-coffee flex flex-col items-center justify-center relative" onClick={handleClick}>
       {/* Кофейные зерна */}
       {animationStep >= 1 && (
         <>
-          <CoffeeBean className="coffee-bean bean-1" />
-          <CoffeeBean className="coffee-bean bean-2" />
-          <CoffeeBean className="coffee-bean bean-3" />
-          <CoffeeBean className="coffee-bean bean-4" />
-          <CoffeeBean className="coffee-bean bean-5" />
-          <CoffeeBean className="coffee-bean bean-6" />
+          <CoffeeBean className="absolute top-20 left-20 animate-[float_3s_ease-in-out_infinite]" />
+          <CoffeeBean className="absolute top-40 left-10 animate-[float_4s_ease-in-out_infinite]" />
+          <CoffeeBean className="absolute top-60 left-30 animate-[float_5s_ease-in-out_infinite]" />
+          <CoffeeBean className="absolute top-30 right-20 animate-[float_3.5s_ease-in-out_infinite]" />
+          <CoffeeBean className="absolute top-50 right-10 animate-[float_4.5s_ease-in-out_infinite]" />
+          <CoffeeBean className="absolute top-70 right-30 animate-[float_5.5s_ease-in-out_infinite]" />
         </>
       )}
 
       {/* Стаканчики кофе */}
       {animationStep >= 2 && (
         <>
-          <CoffeeCup className="coffee-cup cup-left" />
-          <CoffeeCup className="coffee-cup cup-right" />
+          <CoffeeCup className="absolute left-0 top-1/2 transform -translate-y-1/2 animate-[slide-in-left_1s_ease]" />
+          <CoffeeCup className="absolute right-0 top-1/2 transform -translate-y-1/2 animate-[slide-in-right_1s_ease]" />
         </>
       )}
 
       {/* Текст */}
       {animationStep >= 3 && (
-        <div className="splash-text">
-          <h1>ЭТО</h1>
-          <h1>ТВОЙ</h1>
-          <h1>КОФЕ</h1>
+        <div className="text-center text-black animate-[fade-in_1s_ease]">
+          <h1 className="text-4xl font-bold m-2">ЭТО</h1>
+          <h1 className="text-4xl font-bold m-2">ТВОЙ</h1>
+          <h1 className="text-4xl font-bold m-2">КОФЕ</h1>
         </div>
       )}
 
       {/* Кнопка призыва к действию */}
       {animationStep >= 4 && (
-        <div className="splash-cta">
-          <div className="cta-circle"></div>
-          <p className="cta-text">Коснитесь экрана</p>
+        <div className="absolute bottom-20 flex flex-col items-center animate-[fade-in_1s_ease]">
+          <div className="w-16 h-16 rounded-full border-2 border-black animate-[pulse_2s_infinite]">
+          </div>
+          <p className="text-lg mt-4">Коснитесь экрана</p>
         </div>
       )}
     </div>
