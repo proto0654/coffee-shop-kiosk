@@ -32,13 +32,9 @@ const SplashScreen: React.FC = () => {
       setTimeout(() => setAnimationStep(4), 3500), // Появление кнопки
     ];
 
-    // Автоматический переход на экран выбора напитков через 8 секунд
-    const navigationTimer = setTimeout(() => navigate('/drinks'), 8000);
-
     // Очистка таймеров при размонтировании компонента
     return () => {
       animationTimers.forEach(timer => clearTimeout(timer));
-      clearTimeout(navigationTimer);
     };
   }, [navigate]);
 
