@@ -6,22 +6,6 @@
   transition: background-color 0.3s ease;
 }
 
-.drink-selection-screen.coffee-bg {
-  background-color: #FFD600;
-}
-
-.drink-selection-screen.tea-bg {
-  background-color: #8FD14F;
-}
-
-.drink-selection-screen.milkshake-bg {
-  background-color: #FF9BCD;
-}
-
-.drink-selection-screen.soft-drinks-bg {
-  background-color: #FFFFFF;
-}
-
 /* Стили для табов категорий */
 .category-tabs {
   display: flex;
@@ -29,7 +13,7 @@
   background-color: white;
   border-radius: 12px;
   padding: 12px;
-  margin: 20px 0;
+ 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,19 +58,19 @@
 }
 
 .indicator.coffee {
-  background-color: #FFD600;
+  background-color: #EFCCB9;
 }
 
 .indicator.tea {
-  background-color: #36843D;
+  background-color: #C9EA94;
 }
 
 .indicator.milkshake {
-  background-color: #E35A9D;
+  background-color: #F9ECD2;
 }
 
 .indicator.soft-drinks {
-  background-color: #3D85C6;
+  background-color: #FFE665;
 }
 
 /* Стили для сетки продуктов */

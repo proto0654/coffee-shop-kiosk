@@ -57,13 +57,13 @@ const ReadyScreen: React.FC = () => {
   }
 
   return (
-    <div className={`ready-screen ${selectedCategory === 'coffee' ? 'coffee-bg' : 'soft-drinks-bg'}`}>
-      <div className="ready-content">
+    <div className={`w-full h-full flex justify-center items-center ${selectedCategory === 'coffee' ? 'bg-coffee-bg' : selectedCategory === 'tea' ? 'bg-tea-bg' : selectedCategory === 'milkshake' ? 'bg-milkshake-bg' : 'bg-soft-drinks-bg'} transition-colors duration-300`}>
+      <div className="flex flex-col items-center justify-center text-center p-5 animate-bounce-in">
         <CoffeeReadyIcon />
-        <h1 className="ready-title">Напиток готов!</h1>
-        <p className="ready-message">Вы можете забрать ваш {selectedDrink.drink.name} из лотка выдачи</p>
+        <h1 className="text-3xl font-bold my-2.5">Напиток готов!</h1>
+        <p className="text-lg text-gray-800 mb-10 max-w-xs leading-relaxed">Вы можете забрать ваш {selectedDrink.drink.name} из лотка выдачи</p>
         <button
-          className="primary-button return-button"
+          className="w-full max-w-xs py-4 bg-coffee-bg text-black rounded border border-gray-200 hover:bg-opacity-80 transition-colors duration-200"
           onClick={handleReturnHome}
         >
           Вернуться на главный экран

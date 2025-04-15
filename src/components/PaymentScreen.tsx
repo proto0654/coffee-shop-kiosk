@@ -43,7 +43,7 @@ const PaymentScreen: React.FC = () => {
   };
 
   return (
-    <div className={`w-full h-full flex flex-col ${selectedCategory === 'coffee' ? 'bg-coffee' : 'bg-white'} transition-colors duration-300`}>
+    <div className={`w-full h-full flex flex-col ${selectedCategory === 'coffee' ? 'bg-coffee-bg' : selectedCategory === 'tea' ? 'bg-tea-bg' : selectedCategory === 'milkshake' ? 'bg-milkshake-bg' : 'bg-soft-drinks-bg'} transition-colors duration-300`}>
       <Header
         title="Выбор напитка"
         showBackButton={true}

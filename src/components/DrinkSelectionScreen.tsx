@@ -97,15 +97,15 @@ const DrinkSelectionScreen: React.FC = () => {
   const getBackgroundClass = () => {
     switch (selectedCategory) {
       case 'coffee':
-        return 'coffee-bg';
+        return 'bg-coffee-bg';
       case 'tea':
-        return 'tea-bg';
+        return 'bg-tea-bg';
       case 'milkshake':
-        return 'milkshake-bg';
+        return 'bg-milkshake-bg';
       case 'softDrink':
-        return 'soft-drinks-bg';
+        return 'bg-soft-drinks-bg';
       default:
-        return 'coffee-bg';
+        return 'bg-coffee-bg';
     }
   };
 

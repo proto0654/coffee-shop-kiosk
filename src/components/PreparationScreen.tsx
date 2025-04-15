@@ -85,45 +85,46 @@ const PreparationScreen: React.FC = () => {
   }
 
   return (
-    <div className={`preparation-screen ${selectedCategory === 'coffee' ? 'coffee-bg' : 'soft-drinks-bg'}`}>
+    <div className={`w-full h-full flex justify-center items-center ${selectedCategory === 'coffee' ? 'bg-coffee-bg' : selectedCategory === 'tea' ? 'bg-tea-bg' : selectedCategory === 'milkshake' ? 'bg-milkshake-bg' : 'bg-soft-drinks-bg'} transition-colors duration-300`}>
       {isError ? (
-        <div className="preparation-error">
+        <div className="flex flex-col items-center justify-center text-center p-5">
           <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="40" cy="40" r="30" stroke="#FF3B30" strokeWidth="3"/>
             <path d="M50 30L30 50" stroke="#FF3B30" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M30 30L50 50" stroke="#FF3B30" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <h2 className="error-title">Ошибка приготовления</h2>
-          <p className="error-message">К сожалению, произошла ошибка при приготовлении напитка.</p>
+          <h2 className="text-2xl font-semibold my-4 text-red-600">Ошибка приготовления</h2>
+          <p className="text-base text-gray-600 mb-8 max-w-sm">К сожалению, произошла ошибка при приготовлении напитка.</p>
           <button
-            className="primary-button"
+            className="w-full max-w-xs py-4 bg-coffee-bg text-black rounded border border-gray-200 hover:bg-opacity-80 transition-colors duration-200"
             onClick={() => navigate('/drinks')}
           >
             Вернуться к выбору напитков
           </button>
         </div>
       ) : (
-        <div className="preparation-content">
-          <h2 className="preparation-title">Приготовление напитка</h2>
+        <div className="flex flex-col items-center justify-center text-center p-5">
+          <h2 className="text-2xl font-semibold mb-8">Приготовление напитка</h2>
           
-          <div className="timer-container">
-            <svg className="progress-circle" width="150" height="150" viewBox="0 0 100 100">
-              <circle className="circle-bg" cx="50" cy="50" r="45" />
+          <div className="relative w-[150px] h-[150px] my-5">
+            <svg className="transform -rotate-90 origin-center" width="150" height="150" viewBox="0 0 100 100">
+              <circle className="fill-none stroke-gray-200 stroke-[4]" cx="50" cy="50" r="45" />
               <circle
-                className="circle-progress"
+                className="fill-none stroke-coffee stroke-[4] rounded-full"
                 cx="50"
                 cy="50"
                 r="45"
                 strokeDasharray={circumference}
                 strokeDashoffset={dashOffset}
+                style={{ transition: 'stroke-dashoffset 1s linear' }}
               />
             </svg>
-            <div className="timer">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl font-bold">
               {`00:${timeLeft < 10 ? '0' : ''}${timeLeft}`}
             </div>
           </div>
           
-          <p className="preparation-message">
+          <p className="text-lg text-gray-600 mt-8 max-w-xs">
             {selectedDrink.drink.name} готовится. Пожалуйста, подождите.
           </p>
         </div>

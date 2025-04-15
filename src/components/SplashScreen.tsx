@@ -43,7 +43,7 @@ const SplashScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-full bg-coffee flex flex-col items-center justify-center relative" onClick={handleClick}>
+    <div className="w-full h-full bg-coffee-bg flex flex-col items-center justify-center relative" onClick={handleClick}>
       {/* Кофейные зерна */}
       {animationStep >= 1 && (
         <>

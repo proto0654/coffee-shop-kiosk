@@ -8,19 +8,19 @@
 
 /* Цвета фона для разных категорий */
 .coffee-bg {
-  background-color: #FFD600;
+  background-color: #EFCCB9;
 }
 
 .tea-bg {
-  background-color: #8FD14F;
+  background-color: #C9EA94;
 }
 
 .milkshake-bg {
-  background-color: #FF9BCD;
+  background-color: #F9ECD2;
 }
 
 .soft-drinks-bg {
-  background-color: #FFFFFF;
+  background-color: #FFE665;
 }
 
 /* Стили для SVG индикатора прогресса */

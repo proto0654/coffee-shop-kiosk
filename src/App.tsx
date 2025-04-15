@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import './colors.css';
 import SplashScreen from './components/SplashScreen';
 import DrinkSelectionScreen from './components/DrinkSelectionScreen';
 import PaymentScreen from './components/PaymentScreen';
@@ -12,7 +13,7 @@ import { EmulatorProvider } from './context/EmulatorContext';
 
 const App: React.FC = () => {
   return (
-    <div className="w-kiosk h-kiosk relative overflow-hidden bg-white">
+    <div className="w-kiosk h-kiosk relative overflow-hidden">
       <EmulatorProvider>
         <DrinkProvider>
           <Routes>

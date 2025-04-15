@@ -1,0 +1,38 @@
+/* Цвета фонов для категорий */
+.bg-coffee-bg {
+  background-color: #EFCCB9 !important;
+}
+
+.bg-tea-bg {
+  background-color: #C9EA94 !important;
+}
+
+.bg-milkshake-bg {
+  background-color: #F9ECD2 !important;
+}
+
+.bg-soft-drinks-bg {
+  background-color: #FFE665 !important;
+}
+
+/* Цвета индикаторов для категорий */
+.indicator.coffee {
+  background-color: #EFCCB9 !important;
+}
+
+.indicator.tea {
+  background-color: #C9EA94 !important;
+}
+
+.indicator.milkshake {
+  background-color: #F9ECD2 !important;
+}
+
+.indicator.soft-drinks {
+  background-color: #FFE665 !important;
+}
+
+/* Исправление для кнопки в header */
+.bg-coffee {
+  background-color: #EFCCB9 !important;
+} 

@@ -92,7 +92,7 @@ const CashPaymentScreen: React.FC = () => {
   }
 
   return (
-    <div className={`cash-payment-screen ${selectedCategory === 'coffee' ? 'coffee-bg' : 'soft-drinks-bg'}`}>
+    <div className={`w-full h-full flex flex-col ${selectedCategory === 'coffee' ? 'bg-coffee-bg' : selectedCategory === 'tea' ? 'bg-tea-bg' : selectedCategory === 'milkshake' ? 'bg-milkshake-bg' : 'bg-soft-drinks-bg'} transition-colors duration-300`}>
       <Header
         title="Оплата наличными"
         showBackButton={true}

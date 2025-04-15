@@ -21,7 +21,7 @@ body {
   width: 480px;
   height: 800px;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: #ffffff;
 }
 

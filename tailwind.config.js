@@ -1,13 +1,23 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
-        'coffee': '#FFD600',
-        'tea': '#8FD14F',
-        'soft-drink': '#FFFFFF',
-        'milkshake': '#FF9BCD'
+        'coffee': '#EFCCB9',
+        'tea': '#C9EA94',
+        'soft-drink': '#FFE665',
+        'milkshake': '#F9ECD2',
+        'coffee-bg': '#EFCCB9',
+        'tea-bg': '#C9EA94',
+        'soft-drinks-bg': '#FFE665',
+        'milkshake-bg': '#F9ECD2'
+      },
+      strokeColor: {
+        'coffee': '#EFCCB9',
+        'tea': '#C9EA94',
+        'soft-drink': '#FFE665',
+        'milkshake': '#F9ECD2'
       },
       width: {
         'kiosk': '480px'
@@ -32,6 +42,19 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
         },
+        'bounce-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.8)'
+          },
+          '60%': {
+            opacity: '1',
+            transform: 'scale(1.05)'
+          },
+          '100%': {
+            transform: 'scale(1)'
+          }
+        },
         pulse: {
           '0%, 100%': {
             opacity: 1,
@@ -48,6 +71,7 @@ module.exports = {
         'slide-in-left': 'slide-in-left 1s ease',
         'slide-in-right': 'slide-in-right 1s ease',
         'fade-in': 'fade-in 1s ease',
+        'bounce-in': 'bounce-in 0.8s ease',
         pulse: 'pulse 2s infinite'
       }
     },
