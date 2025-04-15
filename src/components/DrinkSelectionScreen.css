@@ -283,7 +283,22 @@
   justify-content: center;
 }
 
-.cup-icon img {
+/* Разные размеры иконок для разных размеров стаканов */
+.cup-size-option:nth-child(1) .cup-icon img {
+  width: auto;
+  height: 65%;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.cup-size-option:nth-child(2) .cup-icon img {
+  width: auto;
+  height: 80%;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.cup-size-option:nth-child(3) .cup-icon img {
   width: auto;
   height: 100%;
   opacity: 0.6;
