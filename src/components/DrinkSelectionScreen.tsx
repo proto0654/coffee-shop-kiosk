@@ -250,15 +250,10 @@ const DrinkSelectionScreen: React.FC = () => {
                   onClick={() => handleSizeSelect(size)}
                 >
                   <div className="cup-icon">
-                    <svg width="40" height="48" viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8 16H32V38C32 39.0609 31.5786 40.0783 30.8284 40.8284C30.0783 41.5786 29.0609 42 28 42H12C10.9391 42 9.92172 41.5786 9.17157 40.8284C8.42143 40.0783 8 39.0609 8 38V16Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M13 6L8 16" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M27 6L32 16" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <img src="/images/icons/cup.svg" alt="Стакан" />
                   </div>
                   <div className="cup-size-info">
                     <div className="cup-size-value">{size.value} мл.</div>
-                    <div className="cup-size-price">{size.priceModifier > 0 ? `+${size.priceModifier}₽` : '0₽'}</div>
                   </div>
                 </div>
               ))}

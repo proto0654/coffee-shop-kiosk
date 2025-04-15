@@ -264,8 +264,10 @@
   flex-direction: column;
   align-items: center;
   padding: 15px 5px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
+  background-color: #F5F5F5;
+  margin: 0 5px;
   transition: background-color 0.2s ease;
 }
 
@@ -274,7 +276,22 @@
 }
 
 .cup-icon {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cup-icon img {
+  width: auto;
+  height: 100%;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.cup-size-option.selected .cup-icon img {
+  opacity: 1;
 }
 
 .cup-size-info {
@@ -284,6 +301,7 @@
 .cup-size-value {
   font-weight: 500;
   font-size: 16px;
+  color: #333333;
 }
 
 .cup-size-price {
