@@ -1,0 +1,82 @@
+.cash-payment-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+.cash-payment-screen.coffee-bg {
+  background-color: #FFD600;
+}
+
+.cash-payment-screen.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+.cash-payment-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-info {
+  width: 100%;
+  margin: 20px 0;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.payment-row:last-child {
+  border-bottom: none;
+}
+
+.payment-row.highlight {
+  background-color: #F9F9F9;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.payment-label {
+  font-size: 16px;
+  color: #333333;
+}
+
+.payment-value {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.payment-instruction {
+  font-size: 16px;
+  color: #666666;
+  margin: 20px 0;
+  line-height: 1.4;
+}
+
+.cancel-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

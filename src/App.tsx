@@ -1,0 +1,34 @@
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import SplashScreen from './components/SplashScreen';
+import DrinkSelectionScreen from './components/DrinkSelectionScreen';
+import PaymentScreen from './components/PaymentScreen';
+import CardPaymentScreen from './components/CardPaymentScreen';
+import CashPaymentScreen from './components/CashPaymentScreen';
+import PreparationScreen from './components/PreparationScreen';
+import ReadyScreen from './components/ReadyScreen';
+import { DrinkProvider } from './context/DrinkContext';
+import { EmulatorProvider } from './context/EmulatorContext';
+
+const App: React.FC = () => {
+  return (
+    <div className="app-container">
+      <EmulatorProvider>
+        <DrinkProvider>
+          <Routes>
+            <Route path="/" element={<SplashScreen />} />
+            <Route path="/drinks" element={<DrinkSelectionScreen />} />
+            <Route path="/payment" element={<PaymentScreen />} />
+            <Route path="/payment/card" element={<CardPaymentScreen />} />
+            <Route path="/payment/cash" element={<CashPaymentScreen />} />
+            <Route path="/preparation" element={<PreparationScreen />} />
+            <Route path="/ready" element={<ReadyScreen />} />
+          </Routes>
+        </DrinkProvider>
+      </EmulatorProvider>
+    </div>
+  );
+};
+
+export default App; 

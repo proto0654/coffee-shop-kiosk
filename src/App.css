@@ -1,0 +1,45 @@
+.app-container {
+  width: 480px;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Цвета фона для разных категорий */
+.coffee-bg {
+  background-color: #FFD600;
+}
+
+.tea-bg {
+  background-color: #8FD14F;
+}
+
+.milkshake-bg {
+  background-color: #FF9BCD;
+}
+
+.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+/* Стили для SVG индикатора прогресса */
+.progress-circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #E0E0E0;
+  stroke-width: 4;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #FFD600;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 283; /* 2 * PI * r, where r = 45 */
+  transition: stroke-dashoffset 0.5s;
+} 

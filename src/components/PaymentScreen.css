@@ -1,0 +1,75 @@
+.payment-method-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+.payment-method-screen.coffee-bg {
+  background-color: #FFD600;
+}
+
+.payment-method-screen.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+.payment-method-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.payment-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.payment-subtitle {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #555555;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.payment-method-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.payment-method-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.payment-method-card svg {
+  margin-right: 15px;
+}
+
+.payment-method-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cancel-button {
+  width: 100%;
+  margin-top: auto;
+} 

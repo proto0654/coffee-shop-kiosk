@@ -1,0 +1,386 @@
+.drink-selection-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+.drink-selection-screen.coffee-bg {
+  background-color: #FFD600;
+}
+
+.drink-selection-screen.tea-bg {
+  background-color: #8FD14F;
+}
+
+.drink-selection-screen.milkshake-bg {
+  background-color: #FF9BCD;
+}
+
+.drink-selection-screen.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+/* Стили для табов категорий */
+.category-tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.category-tab:hover {
+  transform: translateY(-3px);
+}
+
+.category-tab.active {
+  font-weight: 600;
+}
+
+.category-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.category-name {
+  font-size: 14px;
+  text-align: center;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.indicator.coffee {
+  background-color: #FFD600;
+}
+
+.indicator.tea {
+  background-color: #36843D;
+}
+
+.indicator.milkshake {
+  background-color: #E35A9D;
+}
+
+.indicator.soft-drinks {
+  background-color: #3D85C6;
+}
+
+/* Стили для сетки продуктов */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 15px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.product-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #FFD600;
+  color: #000000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 5px 0;
+  text-align: center;
+  color: #333333;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+/* Стили для модального окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.addons-overlay {
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.size-modal, .addons-modal {
+  width: 100%;
+  background-color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 20px;
+  animation: slide-up 0.3s ease-out;
+}
+
+.size-modal {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.addons-modal {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 0;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.drink-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.drink-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.selected-drink-name {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0 20px;
+}
+
+/* Стили для выбора размера */
+.cup-size-options {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.cup-size-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cup-size-option.selected {
+  background-color: #FFD600;
+}
+
+.cup-icon {
+  margin-bottom: 5px;
+}
+
+.cup-size-info {
+  text-align: center;
+}
+
+.cup-size-value {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.cup-size-price {
+  color: #666;
+  font-size: 14px;
+}
+
+.addon-button-toggle {
+  background-color: #F5F5F5;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.addon-button-toggle:hover {
+  background-color: #E0E0E0;
+}
+
+/* Стили для модального окна добавок */
+.addons-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.addon-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.addon-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.addon-controls {
+  display: flex;
+  align-items: center;
+}
+
+.addon-count {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.addon-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #F5F5F5;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.addon-button.plus {
+  background-color: #FFD600;
+}
+
+.addon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.confirm-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #FFD600;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+.confirm-button:hover {
+  background-color: #E5C000;
+} 

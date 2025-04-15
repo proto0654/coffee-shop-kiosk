@@ -1,0 +1,97 @@
+.preparation-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.preparation-screen.coffee-bg {
+  background-color: #FFD600;
+}
+
+.preparation-screen.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+.preparation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.preparation-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.timer-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px 0;
+}
+
+.progress-circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #E0E0E0;
+  stroke-width: 4;
+}
+
+.circle-progress {
+  fill: none;
+  stroke: #FFD600;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.preparation-message {
+  font-size: 18px;
+  color: #666666;
+  margin-top: 30px;
+  max-width: 300px;
+}
+
+/* Стили для экрана ошибки */
+.preparation-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.error-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #FF3B30;
+  margin: 20px 0 10px;
+}
+
+.error-message {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 30px;
+  max-width: 300px;
+} 

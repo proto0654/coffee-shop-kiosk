@@ -1,0 +1,62 @@
+.card-payment-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+.card-payment-screen.coffee-bg {
+  background-color: #FFD600;
+}
+
+.card-payment-screen.soft-drinks-bg {
+  background-color: #FFFFFF;
+}
+
+.card-payment-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-message {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.error-message {
+  color: #FF3B30;
+}
+
+.payment-amount {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.payment-instruction {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.retry-button {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.cancel-button {
+  width: 100%;
+  margin-top: auto;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
