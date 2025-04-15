@@ -44,6 +44,22 @@ const DrinkSelectionScreen: React.FC = () => {
   
   const displayedDrinks = getDisplayedDrinks();
 
+  // Получаем название категории
+  const getCategoryTitle = () => {
+    switch (selectedCategory) {
+      case 'coffee':
+        return 'Кофе';
+      case 'tea':
+        return 'Чай';
+      case 'milkshake':
+        return 'Молочный коктейль';
+      case 'softDrink':
+        return 'Морс и газ. напитки';
+      default:
+        return 'Кофе';
+    }
+  };
+
   // Обработчик выбора категории
   const handleCategoryChange = (category: 'coffee' | 'tea' | 'milkshake' | 'softDrink') => {
     setSelectedCategory(category);
@@ -62,15 +78,6 @@ const DrinkSelectionScreen: React.FC = () => {
   // Обработчик выбора размера
   const handleSizeSelect = (size: SizeOption) => {
     updateSize(size);
-  };
-  
-  // Обработчик добавления/удаления добавки
-  const handleAddonToggle = (addon: Addon) => {
-    if (selectedDrink?.addons.some(a => a.id === addon.id)) {
-      removeAddon(addon.id);
-    } else {
-      addAddon(addon);
-    }
   };
   
   // Обработчик перехода к оплате
@@ -197,28 +204,37 @@ const DrinkSelectionScreen: React.FC = () => {
         </div>
       </div>
       
-      {/* Сетка напитков */}
-      <div className="products-grid">
-        {displayedDrinks.map((drink) => (
-          <div 
-            key={drink.id} 
-            className="product-card" 
-            onClick={() => handleDrinkSelect(drink)}
-          >
-            <div className="product-image-container">
-              <img 
-                src={drink.image} 
-                alt={drink.name} 
-                className="product-image" 
-              />
-              {drink.id === 2 && (
-                <div className="product-badge">2x</div>
-              )}
+      {/* Заголовок выбранной категории */}
+      <div className="category-title-container">
+        <h2 className="category-title">{getCategoryTitle()}</h2>
+        <div className={`category-title-decoration ${selectedCategory}`}></div>
+      </div>
+      
+      {/* Контейнер для сетки с прокруткой */}
+      <div className="products-container">
+        {/* Сетка напитков */}
+        <div className="products-grid">
+          {displayedDrinks.map((drink) => (
+            <div 
+              key={drink.id} 
+              className="product-card" 
+              onClick={() => handleDrinkSelect(drink)}
+            >
+              <div className="product-image-container">
+                <img 
+                  src={drink.image} 
+                  alt={drink.name} 
+                  className="product-image" 
+                />
+                {drink.id === 2 && (
+                  <div className="product-badge">2x</div>
+                )}
+              </div>
+              <h3 className="product-name">{drink.name}</h3>
+              <p className="product-price">от {drink.price}₽</p>
             </div>
-            <h3 className="product-name">{drink.name}</h3>
-            <p className="product-price">от {drink.price}₽</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       
       {/* Модальное окно выбора размера */}

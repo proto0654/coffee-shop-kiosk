@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Drink, SizeOption, Addon, SelectedDrink } from '../types/types';
 
 // Данные о напитках
@@ -183,9 +183,6 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Состояние выбранного напитка
   const [selectedDrink, setSelectedDrink] = useState<SelectedDrink | null>(null);
 
-  // Состояние списка выбранных напитков
-  const [selectedDrinks, setSelectedDrinks] = useState<SelectedDrink[]>([]);
-
   // Функция выбора напитка
   const selectDrink = (drink: Drink) => {
     // По умолчанию выбираем первый размер
@@ -295,7 +292,7 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     removeAddon,
     clearSelection,
     calculateTotalPrice,
-    setSelectedDrinks,
+    setSelectedDrinks: () => {},
   };
 
   return <DrinkContext.Provider value={value}>{children}</DrinkContext.Provider>;

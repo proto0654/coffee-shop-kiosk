@@ -47,7 +47,7 @@ const PaymentScreen: React.FC = () => {
       <Header
         title="Выбор напитка"
         showBackButton={true}
-        onBackClick={() => navigate('/customize')}
+        onBackClick={() => navigate('/drinks')}
       />
 
       <div className="flex-1 flex flex-col items-center p-5">
@@ -74,7 +74,7 @@ const PaymentScreen: React.FC = () => {
 
         <button
           className="w-full py-4 bg-white text-black rounded border border-gray-200 hover:bg-gray-50 transition-colors duration-200 mt-auto"
-          onClick={() => navigate('/customize')}
+          onClick={() => navigate('/drinks')}
         >
           Отмена
         </button>

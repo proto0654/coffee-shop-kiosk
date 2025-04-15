@@ -24,7 +24,7 @@
 
 /* Стили для модального окна */
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -46,7 +46,7 @@
   padding: 20px;
   width: 90%;
   max-width: 400px;
-  max-height: 80vh;
+  max-height: 640px;
   overflow-y: auto;
   position: relative;
 }

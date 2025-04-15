@@ -40,8 +40,8 @@ const ReadyScreen: React.FC = () => {
     
     const timer = setTimeout(() => {
       clearSelection();
-      navigate('/');
-    }, 20000);
+      navigate('/drinks');
+    }, 200000);
 
     return () => clearTimeout(timer);
   }, [navigate, clearSelection, shouldRedirect, selectedDrink]);
@@ -63,7 +63,7 @@ const ReadyScreen: React.FC = () => {
         <h1 className="text-3xl font-bold my-2.5">Напиток готов!</h1>
         <p className="text-lg text-gray-800 mb-10 max-w-xs leading-relaxed">Вы можете забрать ваш {selectedDrink.drink.name} из лотка выдачи</p>
         <button
-          className="w-full max-w-xs py-4 bg-coffee-bg text-black rounded border border-gray-200 hover:bg-opacity-80 transition-colors duration-200"
+          className="w-full max-w-xs py-4 text-black rounded-2xl bg-white border border-gray-200 hover:bg-opacity-80 transition-colors duration-200"
           onClick={handleReturnHome}
         >
           Вернуться на главный экран

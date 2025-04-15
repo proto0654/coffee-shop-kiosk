@@ -25,6 +25,12 @@ module.exports = {
       height: {
         'kiosk': '800px'
       },
+      borderRadius: {
+        '4xl': '14px'
+      },
+      fontSize: {
+        'xs': '0.75rem', // 12px
+      },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },

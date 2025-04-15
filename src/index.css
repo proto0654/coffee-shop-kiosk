@@ -32,7 +32,9 @@ button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 }
-
+header button{
+  height: 45px;
+}
 .primary-button {
   background-color: #FFD600;
   color: #000000;
@@ -56,7 +58,7 @@ button {
 
 /* Стили для оверлея модальных окон */
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -73,8 +75,8 @@ button {
   border-radius: 8px;
   padding: 20px;
   width: 90%;
-  max-width: 440px;
-  max-height: 90%;
+  max-width: 430px;
+  max-height: 720px;
   overflow-y: auto;
 }
 
@@ -138,13 +140,6 @@ button {
   background-color: #888888;
 }
 
-/* Стили для сетки товаров */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 20px;
-}
 
 .product-card {
   background-color: #FFFFFF;
@@ -154,16 +149,7 @@ button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
 
-.product-name {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
 
 .product-price {
   font-size: 18px;

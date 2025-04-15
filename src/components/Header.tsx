@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="w-full h-15 flex flex-row flex-nowrap justify-between items-center px-4 shadow-md bg-transparent z-10 relative">
+    <header className="w-full py-5 h-15 flex flex-row flex-nowrap justify-between items-center px-4 bg-transparent z-10 relative">
       <div className="absolute top-0 right-0 w-50 h-full bg-no-repeat bg-right bg-cover -z-10" 
            style={{ backgroundImage: "url('./header-arrow-bg.svg')" }}>
       </div>
@@ -51,11 +51,11 @@ const Header: React.FC<HeaderProps> = ({
       <div className="flex flex-row flex-nowrap items-center gap-2.5">
         {showPhoneIcon && (
           <button 
-            className="flex flex-row flex-nowrap items-center justify-center h-10 rounded-full bg-coffee-bg shadow-md px-4 hover:bg-opacity-80 transition-colors"
+            className="flex px-0 py-1 flex-row flex-nowrap items-center justify-center rounded-4xl bg-white shadow-md hover:bg-opacity-80 transition-colors"
             aria-label="Login or register"
           >
-            <img src={callIcon} alt="" className="w-5 h-5" />
-            <span className="text-sm font-medium text-black whitespace-nowrap ml-2.5">
+            <img src={callIcon} alt="" className="w-10 h-10 mx-1" />
+            <span className="text-xs mr-3 font-medium text-black whitespace-nowrap ml-1">
               Вход / регистрация
             </span>
           </button>
