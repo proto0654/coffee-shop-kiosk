@@ -218,9 +218,9 @@ const DrinkSelectionScreen: React.FC = () => {
       </div>
       
       {/* Модальное окно выбора размера */}
-      {showSizeModal && selectedDrink && (
-        <div className="modal-overlay">
-          <div className="size-modal">
+      {selectedDrink && (
+        <div className={`modal-overlay ${showSizeModal ? 'active' : ''}`}>
+          <div className={`size-modal ${showSizeModal ? 'active' : ''}`}>
             <div className="modal-header">
               <span></span>
               <button className="close-button" onClick={closeSizeModal}>
@@ -263,7 +263,7 @@ const DrinkSelectionScreen: React.FC = () => {
               Хотите добавить сироп?
             </button>
             
-            <button 
+            <button
               className="confirm-button"
               onClick={handleGoToPayment}
             >
@@ -274,9 +274,9 @@ const DrinkSelectionScreen: React.FC = () => {
       )}
       
       {/* Модальное окно выбора добавок (сиропов) */}
-      {showAddonsModal && selectedDrink && (
-        <div className="modal-overlay addons-overlay">
-          <div className="addons-modal">
+      {selectedDrink && (
+        <div className={`modal-overlay addons-overlay ${showAddonsModal ? 'active' : ''}`}>
+          <div className={`addons-modal ${showAddonsModal ? 'active' : ''}`}>
             <div className="modal-header">
               <span></span>
               <button className="close-button" onClick={closeAddonsModal}>
@@ -317,7 +317,7 @@ const DrinkSelectionScreen: React.FC = () => {
               ))}
             </div>
             
-            <button 
+            <button
               className="confirm-button"
               onClick={handleGoToPayment}
             >
