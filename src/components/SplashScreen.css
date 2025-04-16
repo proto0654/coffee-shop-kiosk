@@ -13,7 +13,7 @@ h1 {
   z-index: 1;
   opacity: 0;
   transition: opacity 0.5s ease;
-  /* Временно удаляем фоновое изображение, пока не решим проблему */
+  background: radial-gradient(71.35% 41.74% at 50.18% 40.65%, #ffee96 0%, #e9c514 100%);
   background-size: cover;
   background-position: center;
 }
