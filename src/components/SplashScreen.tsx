@@ -54,13 +54,13 @@ const SplashScreen: React.FC = () => {
       {animationStep >= 3 && (
         <>
           <img
-            src="/images/splash/cup-right.png"
-            alt="Coffee Cup"
+            src={`${process.env.PUBLIC_URL}/images/splash/cup-right.png`}
+            alt="Cup Right"
             className="absolute top-[14%] right-[-20%] w-74 h-auto z-20 animate-[slide-in-right_1.5s_ease]"
           />
           <img
-            src="/images/splash/cup-left.png"
-            alt="Coffee Cup"
+            src={`${process.env.PUBLIC_URL}/images/splash/cup-left.png`}
+            alt="Cup Left"
             className="absolute bottom-0 left-[-40%] w-124 h-auto z-20 animate-[slide-in-left_1.5s_ease]"
           />
         </>
@@ -70,37 +70,37 @@ const SplashScreen: React.FC = () => {
       {animationStep >= 2 && (
         <>
           <img
-            src="/images/splash/bean1.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean1.png`}
             alt="Coffee Bean"
             className={`absolute top-[15%] left-[20%] w-12 h-auto z-40 animate-[float_3s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '0ms' : '0ms' }}
           />
           <img
-            src="/images/splash/bean2.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean2.png`}
             alt="Coffee Bean"
             className={`absolute top-[10%] right-[15%] w-16 h-auto z-40 animate-[float_4s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '120ms' : '0ms' }}
           />
           <img
-            src="/images/splash/bean3.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean3.png`}
             alt="Coffee Bean"
             className={`absolute top-[75%] left-[40%] w-24 h-auto z-40 animate-[float_3.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '240ms' : '0ms' }}
           />
           <img
-            src="/images/splash/bean4.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean4.png`}
             alt="Coffee Bean"
             className={`absolute top-[5%] left-[30%] w-20 h-auto z-40 animate-[float_5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '360ms' : '0ms' }}
           />
           <img
-            src="/images/splash/bean5.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean5.png`}
             alt="Coffee Bean"
             className={`absolute top-[55%] right-[20%] w-14 h-auto z-40 animate-[float_4.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '480ms' : '0ms' }}
           />
           <img
-            src="/images/splash/bean6.png"
+            src={`${process.env.PUBLIC_URL}/images/splash/bean6.png`}
             alt="Coffee Bean"
             className={`absolute top-[5%] right-[2%] w-16 h-auto z-40 animate-[float_5.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
             style={{ transitionDelay: animationStep >= 5 ? '600ms' : '0ms' }}

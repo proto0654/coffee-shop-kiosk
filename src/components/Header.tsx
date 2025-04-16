@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({
     <header className="w-full py-5 h-15 flex flex-row flex-nowrap justify-between items-center px-4 bg-transparent z-10 relative">
       <div
         className="absolute top-0 right-0 w-50 h-full bg-no-repeat bg-right bg-cover -z-10"
-        style={{ backgroundImage: "url('./header-arrow-bg.svg')" }}
+        style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/header-arrow-bg.svg')` }}
       ></div>
 
       <div className="flex flex-row flex-nowrap items-center">
