@@ -178,8 +178,10 @@ export const useDrink = (): DrinkContextType => {
 // Провайдер контекста
 export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Состояние выбранной категории напитков
-  const [selectedCategory, setSelectedCategory] = useState<'coffee' | 'tea' | 'milkshake' | 'softDrink'>('coffee');
-  
+  const [selectedCategory, setSelectedCategory] = useState<
+    'coffee' | 'tea' | 'milkshake' | 'softDrink'
+  >('coffee');
+
   // Состояние выбранного напитка
   const [selectedDrink, setSelectedDrink] = useState<SelectedDrink | null>(null);
 
@@ -187,7 +189,7 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const selectDrink = (drink: Drink) => {
     // По умолчанию выбираем первый размер
     const defaultSize = sizeOptions[0];
-    
+
     setSelectedDrink({
       drink,
       size: defaultSize,
@@ -211,7 +213,7 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const addAddon = (addon: Addon) => {
     if (selectedDrink) {
       // Проверяем, не добавлена ли уже эта добавка
-      if (!selectedDrink.addons.some((a) => a.id === addon.id)) {
+      if (!selectedDrink.addons.some(a => a.id === addon.id)) {
         const updatedAddons = [...selectedDrink.addons, addon];
         setSelectedDrink({
           ...selectedDrink,
@@ -229,7 +231,7 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Функция удаления добавки
   const removeAddon = (addonId: number) => {
     if (selectedDrink) {
-      const updatedAddons = selectedDrink.addons.filter((addon) => addon.id !== addonId);
+      const updatedAddons = selectedDrink.addons.filter(addon => addon.id !== addonId);
       setSelectedDrink({
         ...selectedDrink,
         addons: updatedAddons,
@@ -254,11 +256,7 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   // Вспомогательная функция для расчета цены с учетом размера
-  const calculatePriceWithSize = (
-    basePrice: number,
-    size: SizeOption,
-    addons: Addon[]
-  ): number => {
+  const calculatePriceWithSize = (basePrice: number, size: SizeOption, addons: Addon[]): number => {
     const addonsTotal = addons.reduce((total, addon) => total + addon.price, 0);
     return basePrice + size.priceModifier + addonsTotal;
   };
@@ -296,4 +294,4 @@ export const DrinkProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   return <DrinkContext.Provider value={value}>{children}</DrinkContext.Provider>;
-}; 
+};

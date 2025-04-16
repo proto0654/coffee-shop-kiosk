@@ -7,11 +7,11 @@
 }
 
 .cash-payment-screen.coffee-bg {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .cash-payment-screen.soft-drinks-bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .cash-payment-content {
@@ -27,7 +27,7 @@
 .payment-info {
   width: 100%;
   margin: 20px 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .payment-row:last-child {
@@ -46,7 +46,7 @@
 }
 
 .payment-row.highlight {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   font-weight: 600;
   border-radius: 8px;
   margin-top: 10px;
@@ -79,4 +79,4 @@
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-} 
+}

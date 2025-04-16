@@ -32,11 +32,11 @@ button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
 }
-header button{
+header button {
   height: 45px;
 }
 .primary-button {
-  background-color: #FFD600;
+  background-color: #ffd600;
   color: #000000;
   border-radius: 4px;
   padding: 15px 0;
@@ -46,14 +46,14 @@ header button{
 }
 
 .secondary-button {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
   border-radius: 4px;
   padding: 15px 0;
   width: 100%;
   text-align: center;
   font-size: 16px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
 }
 
 /* Стили для оверлея модальных окон */
@@ -71,7 +71,7 @@ header button{
 }
 
 .modal-content {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   width: 90%;
@@ -86,40 +86,13 @@ header button{
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #E0E0E0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .header-title {
   font-size: 20px;
   font-weight: 600;
-}
-
-/* Стили для категорий напитков */
-.category-tabs {
-  display: flex;
-  justify-content: space-around;
-  background-color: #F5F5F5;
-  padding: 10px 0;
-}
-
-.category-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.category-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 5px;
-}
-
-.category-name {
-  font-size: 12px;
-  color: #333333;
 }
 
 .indicator {
@@ -133,23 +106,20 @@ header button{
 }
 
 .indicator.coffee {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .indicator.soft-drinks {
   background-color: #888888;
 }
 
-
 .product-card {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 15px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-
 
 .product-price {
   font-size: 18px;
@@ -166,7 +136,7 @@ header button{
 }
 
 .payment-option {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -205,4 +175,4 @@ header button{
 .preparation-message {
   font-size: 18px;
   color: #666666;
-} 
+}

@@ -23,7 +23,9 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Функция для эмуляции вставки наличных
   const startCashin = useCallback((callback: (amount: number) => void) => {
     cashInsertCallbackRef.current = callback;
-    console.log('🔵 Эмулятор: Режим приема наличных активирован. Используйте Ctrl+1 для вставки 100₽, Ctrl+2 для 200₽');
+    console.log(
+      '🔵 Эмулятор: Режим приема наличных активирован. Используйте Ctrl+1 для вставки 100₽, Ctrl+2 для 200₽'
+    );
   }, []);
 
   // Функция для остановки эмуляции вставки наличных
@@ -35,11 +37,17 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   // Функция для эмуляции оплаты банковской картой
   const bankCardPurchase = useCallback(
-    (amount: number, callback: (success: boolean) => void, displayCallback: (message: string) => void) => {
+    (
+      amount: number,
+      callback: (success: boolean) => void,
+      displayCallback: (message: string) => void
+    ) => {
       bankCardCallbackRef.current = callback;
       bankCardDisplayCallbackRef.current = displayCallback;
       displayCallback('Приложите карту к терминалу');
-      console.log(`🔵 Эмулятор: Режим оплаты картой активирован на сумму ${amount}₽. Используйте пробел для приложения карты.`);
+      console.log(
+        `🔵 Эмулятор: Режим оплаты картой активирован на сумму ${amount}₽. Используйте пробел для приложения карты.`
+      );
     },
     []
   );
@@ -57,7 +65,9 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   // Функция для эмуляции приготовления напитка
   const vend = useCallback((productIdx: number, callback: (success: boolean) => void) => {
     vendCallbackRef.current = callback;
-    console.log(`🔵 Эмулятор: Приготовление напитка #${productIdx} начато. Используйте Ctrl+P для успешного приготовления, Ctrl+E для ошибки`);
+    console.log(
+      `🔵 Эмулятор: Приготовление напитка #${productIdx} начато. Используйте Ctrl+P для успешного приготовления, Ctrl+E для ошибки`
+    );
   }, []);
 
   // Обработчики клавиатурных сокращений
@@ -74,7 +84,8 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         } else if (e.key === '0') {
           cashInsertCallbackRef.current(10);
           console.log('🔵 Эмулятор: Вставлено 10₽');
-        } else if (e.key === ' ') { // пробел
+        } else if (e.key === ' ') {
+          // пробел
           cashInsertCallbackRef.current(100);
           console.log('🔵 Эмулятор: Вставлено 100₽');
         }
@@ -87,7 +98,7 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           const callback = bankCardCallbackRef.current;
           bankCardCallbackRef.current = null;
           bankCardDisplayCallbackRef.current = null;
-          
+
           // Вызываем колбэк после очистки ссылок
           callback(true);
         }
@@ -133,4 +144,4 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   return <EmulatorContext.Provider value={emulatorValue}>{children}</EmulatorContext.Provider>;
-}; 
+};

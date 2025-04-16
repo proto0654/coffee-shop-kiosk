@@ -1,0 +1,105 @@
+h1 {
+  font-size: 80px;
+  line-height: 1.2;
+}
+
+.splash-yellow-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ffd600;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  /* Временно удаляем фоновое изображение, пока не решим проблему */
+  background-size: cover;
+  background-position: center;
+}
+.cta-bg {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.cta-bg.cta-visible {
+  opacity: 1;
+}
+.cta-bg:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid white;
+  border-radius: 50%;
+  transform: scale(1.3);
+}
+.splash-yellow-bg.visible {
+  opacity: 1;
+}
+
+/* Добавляем анимацию плавающих зерен */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Стили для адаптивных размеров */
+@media (max-height: 700px) {
+  .text-6xl {
+    font-size: 3rem;
+  }
+
+  .w-44 {
+    width: 9rem;
+  }
+}
+
+/* Дополнительные анимации для элементов */
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%) translateY(60%) rotate(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%) rotate(20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.beans-visible {
+  opacity: 1 !important;
+}
+img[alt^='Coffee Bean'] {
+  opacity: 0;
+}

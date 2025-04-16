@@ -8,11 +8,11 @@
 }
 
 .ready-screen.coffee-bg {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .ready-screen.soft-drinks-bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .ready-content {
@@ -56,4 +56,4 @@
 .return-button {
   width: 100%;
   max-width: 300px;
-} 
+}

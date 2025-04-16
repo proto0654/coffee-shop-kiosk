@@ -4,15 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .preparation-screen.coffee-bg {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .preparation-screen.soft-drinks-bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .preparation-content {
@@ -45,13 +45,13 @@
 
 .circle-bg {
   fill: none;
-  stroke: #E0E0E0;
+  stroke: #e0e0e0;
   stroke-width: 1.5;
 }
 
 .circle-progress {
   fill: none;
-  stroke: #FFD600;
+  stroke: #ffd600;
   stroke-width: 1.5;
   stroke-linecap: round;
   transition: stroke-dashoffset 1s linear;
@@ -67,7 +67,7 @@
   transform-origin: center;
   z-index: 10;
 }
-.tracking-wider{
+.tracking-wider {
   font-size: 60px;
 }
 /* Стили для шарика-индикатора */
@@ -85,7 +85,7 @@
   left: 50%;
   width: 6px;
   height: 6px;
-  background-color: #FFD600;
+  background-color: #ffd600;
   border-radius: 50%;
   transform: translateX(-50%);
 }
@@ -123,7 +123,7 @@
 .error-title {
   font-size: 24px;
   font-weight: 600;
-  color: #FF3B30;
+  color: #ff3b30;
   margin: 20px 0 10px;
 }
 
@@ -132,4 +132,4 @@
   color: #666666;
   margin-bottom: 30px;
   max-width: 300px;
-} 
+}

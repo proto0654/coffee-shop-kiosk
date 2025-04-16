@@ -47,4 +47,4 @@ export interface EmulatorInterface {
   ) => void;
   bankCardCancel: () => void;
   vend: (productIdx: number, callback: (success: boolean) => void) => void;
-} 
+}

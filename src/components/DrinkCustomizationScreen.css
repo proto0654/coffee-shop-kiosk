@@ -7,11 +7,11 @@
 }
 
 .customization-screen.coffee-bg {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .customization-screen.soft-drinks-bg {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .customization-content {
@@ -41,7 +41,7 @@
 }
 
 .modal-content {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
   width: 90%;
@@ -95,17 +95,17 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 2px solid #E0E0E0;
+  border: 2px solid #e0e0e0;
   border-radius: 8px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
   margin: 0 5px;
 }
 
 .size-option.selected {
-  border-color: #FFD600;
-  background-color: #FFF9E0;
+  border-color: #ffd600;
+  background-color: #fff9e0;
 }
 
 .size-icon {
@@ -138,7 +138,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .addon-info {
@@ -169,20 +169,20 @@
   align-items: center;
   justify-content: center;
   border: none;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .addon-button.add {
-  background-color: #FFD600;
+  background-color: #ffd600;
 }
 
 .addon-button.remove {
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 /* Стили для секции оплаты */
 .payment-section {
   margin-top: 10px;
-} 
+}

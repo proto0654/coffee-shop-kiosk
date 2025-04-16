@@ -1,22 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// SVG для кофейных зерен
-const CoffeeBean: React.FC<{ className: string }> = ({ className }) => (
-  <svg className={className} width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20 0C13.6364 0 8 5.37223 8 12C8 18.6278 13.6364 24 20 24C26.3636 24 32 18.6278 32 12C32 5.37223 26.3636 0 20 0ZM20 20C16.0909 20 12.7273 16.4223 12.7273 12C12.7273 7.57772 16.0909 4 20 4C23.9091 4 27.2727 7.57772 27.2727 12C27.2727 16.4223 23.9091 20 20 20Z" fill="#3D240F"/>
-    <path d="M20 8C18.6364 8 17.4545 9.79116 17.4545 12C17.4545 14.2088 18.6364 16 20 16C21.3636 16 22.5455 14.2088 22.5455 12C22.5455 9.79116 21.3636 8 20 8Z" fill="#3D240F"/>
-  </svg>
-);
-
-// SVG для стаканчика
-const CoffeeCup: React.FC<{ className: string }> = ({ className }) => (
-  <svg className={className} width="70" height="90" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 20H60L55 90H15L10 20Z" fill="white" stroke="#E0E0E0" strokeWidth="2"/>
-    <path d="M18 10H52L55 20H15L18 10Z" fill="#F2F2F2" stroke="#E0E0E0" strokeWidth="2"/>
-    <circle cx="35" cy="55" r="15" fill="#F2F2F2" stroke="#E0E0E0" strokeWidth="2"/>
-  </svg>
-);
+import './SplashScreen.css';
 
 const SplashScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -25,17 +9,18 @@ const SplashScreen: React.FC = () => {
   useEffect(() => {
     // Последовательные анимации
     const animationTimers = [
-      setTimeout(() => setAnimationStep(1), 500), // Появление зерен
-      setTimeout(() => setAnimationStep(2), 1500), // Появление стаканчиков
-      setTimeout(() => setAnimationStep(3), 2500), // Появление текста
-      setTimeout(() => setAnimationStep(4), 3500), // Появление кнопки
+      setTimeout(() => setAnimationStep(1), 300), // Появление фона
+      setTimeout(() => setAnimationStep(2), 600), // Появление зерен
+      setTimeout(() => setAnimationStep(3), 900), // Появление стаканчиков
+      setTimeout(() => setAnimationStep(4), 1200), // Появление текста
+      setTimeout(() => setAnimationStep(5), 1800), // Появление призыва к действию
     ];
 
     // Очистка таймеров при размонтировании компонента
     return () => {
       animationTimers.forEach(timer => clearTimeout(timer));
     };
-  }, [navigate]);
+  }, []);
 
   // Обработчик клика для перехода на экран выбора напитков
   const handleClick = () => {
@@ -43,46 +28,98 @@ const SplashScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-full bg-coffee-bg flex flex-col items-center justify-center relative" onClick={handleClick}>
-      {/* Кофейные зерна */}
-      {animationStep >= 1 && (
-        <>
-          <CoffeeBean className="absolute top-20 left-20 animate-[float_3s_ease-in-out_infinite]" />
-          <CoffeeBean className="absolute top-40 left-10 animate-[float_4s_ease-in-out_infinite]" />
-          <CoffeeBean className="absolute top-60 left-30 animate-[float_5s_ease-in-out_infinite]" />
-          <CoffeeBean className="absolute top-30 right-20 animate-[float_3.5s_ease-in-out_infinite]" />
-          <CoffeeBean className="absolute top-50 right-10 animate-[float_4.5s_ease-in-out_infinite]" />
-          <CoffeeBean className="absolute top-70 right-30 animate-[float_5.5s_ease-in-out_infinite]" />
-        </>
-      )}
+    <div className="w-full h-full relative overflow-hidden" onClick={handleClick}>
+      {/* Желтый фон */}
+      <div className={`splash-yellow-bg ${animationStep >= 1 ? 'visible' : ''}`}></div>
 
-      {/* Стаканчики кофе */}
-      {animationStep >= 2 && (
-        <>
-          <CoffeeCup className="absolute left-0 top-1/2 transform -translate-y-1/2 animate-[slide-in-left_1s_ease]" />
-          <CoffeeCup className="absolute right-0 top-1/2 transform -translate-y-1/2 animate-[slide-in-right_1s_ease]" />
-        </>
-      )}
+      {/* Декоративные круги */}
+      <div
+        className={`cta-bg absolute bottom-[-270px] right-[-170px] w-[500px] h-[500px] bg-white rounded-full z-20 transition-opacity duration-500 ease-in-out${animationStep >= 1 ? ' cta-visible' : ''}`}
+      ></div>
 
       {/* Текст */}
-      {animationStep >= 3 && (
-        <div className="text-center text-black animate-[fade-in_1s_ease]">
-          <h1 className="text-4xl font-bold m-2">ЭТО</h1>
-          <h1 className="text-4xl font-bold m-2">ТВОЙ</h1>
-          <h1 className="text-4xl font-bold m-2">КОФЕ</h1>
+      {animationStep >= 4 && (
+        <div className="absolute top-[10%] left-[3%] text-left text-black z-10 animate-[fade-in_1s_ease]">
+          <h1 className="font-light mb-2">
+            ЭТО
+            <br />
+            ТВОЙ
+            <br />
+            КОФЕ
+          </h1>
         </div>
       )}
 
-      {/* Кнопка призыва к действию */}
-      {animationStep >= 4 && (
-        <div className="absolute bottom-20 flex flex-col items-center animate-[fade-in_1s_ease]">
-          <div className="w-16 h-16 rounded-full border-2 border-black animate-[pulse_2s_infinite]">
-          </div>
-          <p className="text-lg mt-4">Коснитесь экрана</p>
+      {/* Стаканчики кофе */}
+      {animationStep >= 3 && (
+        <>
+          <img
+            src="/images/splash/cup-right.png"
+            alt="Coffee Cup"
+            className="absolute top-[14%] right-[-20%] w-74 h-auto z-20 animate-[slide-in-right_1.5s_ease]"
+          />
+          <img
+            src="/images/splash/cup-left.png"
+            alt="Coffee Cup"
+            className="absolute bottom-0 left-[-40%] w-124 h-auto z-20 animate-[slide-in-left_1.5s_ease]"
+          />
+        </>
+      )}
+
+      {/* Кофейные зерна */}
+      {animationStep >= 2 && (
+        <>
+          <img
+            src="/images/splash/bean1.png"
+            alt="Coffee Bean"
+            className={`absolute top-[15%] left-[20%] w-12 h-auto z-40 animate-[float_3s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '0ms' : '0ms' }}
+          />
+          <img
+            src="/images/splash/bean2.png"
+            alt="Coffee Bean"
+            className={`absolute top-[10%] right-[15%] w-16 h-auto z-40 animate-[float_4s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '120ms' : '0ms' }}
+          />
+          <img
+            src="/images/splash/bean3.png"
+            alt="Coffee Bean"
+            className={`absolute top-[75%] left-[40%] w-24 h-auto z-40 animate-[float_3.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '240ms' : '0ms' }}
+          />
+          <img
+            src="/images/splash/bean4.png"
+            alt="Coffee Bean"
+            className={`absolute top-[5%] left-[30%] w-20 h-auto z-40 animate-[float_5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '360ms' : '0ms' }}
+          />
+          <img
+            src="/images/splash/bean5.png"
+            alt="Coffee Bean"
+            className={`absolute top-[55%] right-[20%] w-14 h-auto z-40 animate-[float_4.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '480ms' : '0ms' }}
+          />
+          <img
+            src="/images/splash/bean6.png"
+            alt="Coffee Bean"
+            className={`absolute top-[5%] right-[2%] w-16 h-auto z-40 animate-[float_5.5s_ease-in-out_infinite] transition-opacity duration-500${animationStep >= 5 ? ' beans-visible' : ''}`}
+            style={{ transitionDelay: animationStep >= 5 ? '600ms' : '0ms' }}
+          />
+        </>
+      )}
+
+      {/* Призыв к действию */}
+      {animationStep >= 5 && (
+        <div className="absolute bottom-10 right-10 z-30 animate-[fade-in_1s_ease]">
+          <p className="text-2xl font-medium text-center">
+            Коснитесь
+            <br />
+            экрана
+          </p>
         </div>
       )}
     </div>
   );
 };
 
-export default SplashScreen; 
+export default SplashScreen;

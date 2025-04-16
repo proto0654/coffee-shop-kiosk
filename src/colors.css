@@ -1,38 +1,38 @@
 /* Цвета фонов для категорий */
 .bg-coffee-bg {
-  background-color: #EFCCB9 !important;
+  background-color: #efccb9 !important;
 }
 
 .bg-tea-bg {
-  background-color: #C9EA94 !important;
+  background-color: #c9ea94 !important;
 }
 
 .bg-milkshake-bg {
-  background-color: #F9ECD2 !important;
+  background-color: #f9ecd2 !important;
 }
 
 .bg-soft-drinks-bg {
-  background-color: #FFE665 !important;
+  background-color: #ffe665 !important;
 }
 
 /* Цвета индикаторов для категорий */
 .indicator.coffee {
-  background-color: #EFCCB9 !important;
+  background-color: #efccb9 !important;
 }
 
 .indicator.tea {
-  background-color: #C9EA94 !important;
+  background-color: #c9ea94 !important;
 }
 
 .indicator.milkshake {
-  background-color: #F9ECD2 !important;
+  background-color: #f9ecd2 !important;
 }
 
 .indicator.soft-drinks {
-  background-color: #FFE665 !important;
+  background-color: #ffe665 !important;
 }
 
 /* Исправление для кнопки в header */
 .bg-coffee {
-  background-color: #EFCCB9 !important;
-} 
+  background-color: #efccb9 !important;
+}
