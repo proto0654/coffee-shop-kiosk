@@ -270,7 +270,7 @@ const DrinkSelectionScreen: React.FC = () => {
                   onClick={() => handleSizeSelect(size)}
                 >
                   <div className="cup-icon">
-                    <img src="/images/icons/cup.svg" alt="Стакан" />
+                    <img src={`${process.env.PUBLIC_URL}/images/icons/cup.svg`} alt="Стакан" />
                   </div>
                   <div className="cup-size-info">
                     <div className="cup-size-value">{size.value} мл.</div>
