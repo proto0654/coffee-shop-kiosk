@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/coffee-shop-kiosk/static/css/main.565a4b16.css",
-    "main.js": "/coffee-shop-kiosk/static/js/main.cde20b9c.js",
+    "main.js": "/coffee-shop-kiosk/static/js/main.60cf5b80.js",
     "static/media/call-icon.svg": "/coffee-shop-kiosk/static/media/call-icon.536e196b19254030741d06c86e0163fc.svg",
     "index.html": "/coffee-shop-kiosk/index.html",
     "main.565a4b16.css.map": "/coffee-shop-kiosk/static/css/main.565a4b16.css.map",
-    "main.cde20b9c.js.map": "/coffee-shop-kiosk/static/js/main.cde20b9c.js.map"
+    "main.60cf5b80.js.map": "/coffee-shop-kiosk/static/js/main.60cf5b80.js.map"
   },
   "entrypoints": [
     "static/css/main.565a4b16.css",
-    "static/js/main.cde20b9c.js"
+    "static/js/main.60cf5b80.js"
   ]
 }
