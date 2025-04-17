@@ -14,6 +14,7 @@ const PreparationScreen: React.FC = () => {
   const [isError, setIsError] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [isFastForwarding, setIsFastForwarding] = useState(false);
+  const [isVendingSuccessful, setIsVendingSuccessful] = useState<boolean | null>(null);
 
   // Процент завершения для индикатора прогресса
   const progressPercent = 100 - (timeLeft / 60) * 100;
@@ -82,6 +83,10 @@ const PreparationScreen: React.FC = () => {
         // Если время вышло, останавливаем таймер
         if (prevTime <= 1) {
           clearInterval(timer);
+          // Автоматически устанавливаем успешное приготовление, когда таймер достиг 0
+          if (isVendingSuccessful === null) {
+            setIsVendingSuccessful(true);
+          }
           return 0;
         }
         return prevTime - 1;
@@ -91,11 +96,8 @@ const PreparationScreen: React.FC = () => {
     // Запускаем эмуляцию приготовления напитка
     emulator.vend(selectedDrink.drink.id, success => {
       if (success) {
-        // Если приготовление успешно, дожидаемся окончания таймера
-        // и переходим на экран готовности напитка
-        if (timeLeft <= 0) {
-          navigate('/ready');
-        }
+        // Если приготовление успешно, устанавливаем флаг успешности
+        setIsVendingSuccessful(true);
       } else {
         // Если произошла ошибка, показываем сообщение об ошибке
         setIsError(true);
@@ -107,15 +109,18 @@ const PreparationScreen: React.FC = () => {
     return () => {
       clearInterval(timer);
     };
-  }, [emulator, navigate, timeLeft, selectedDrink, shouldRedirect, isFastForwarding]);
+  }, [emulator, navigate, selectedDrink, shouldRedirect, isFastForwarding]);
 
   // Эффект для автоматического перехода на экран готовности
   useEffect(() => {
     // Если нужно перенаправить или есть ошибка, не выполняем действия
     if (shouldRedirect || !selectedDrink || isError || timeLeft > 0) return;
 
-    navigate('/ready');
-  }, [timeLeft, isError, navigate, shouldRedirect, selectedDrink]);
+    // Проверяем, что напиток успешно приготовлен
+    if (isVendingSuccessful) {
+      navigate('/ready');
+    }
+  }, [timeLeft, isError, navigate, shouldRedirect, selectedDrink, isVendingSuccessful]);
 
   // Если нет выбранного напитка или происходит перенаправление
   if (shouldRedirect || !selectedDrink) {

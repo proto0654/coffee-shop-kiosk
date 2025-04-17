@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { EmulatorInterface } from '../types/types';
 
-// Создаем контекст для эмулятора
+// Константы для таймеров
+export const PAYMENT_TIMEOUT_MS = 10000;
+export const PAYMENT_TIMEOUT_SEC = PAYMENT_TIMEOUT_MS / 1000;
+
 const EmulatorContext = createContext<EmulatorInterface | undefined>(undefined);
 
-// Хук для использования контекста эмулятора
 export const useEmulator = (): EmulatorInterface => {
   const context = useContext(EmulatorContext);
   if (context === undefined) {
@@ -14,13 +16,15 @@ export const useEmulator = (): EmulatorInterface => {
 };
 
 export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Используем useRef вместо useState для хранения колбэков
   const cashInsertCallbackRef = useRef<((amount: number) => void) | null>(null);
   const bankCardCallbackRef = useRef<((success: boolean) => void) | null>(null);
   const bankCardDisplayCallbackRef = useRef<((message: string) => void) | null>(null);
   const vendCallbackRef = useRef<((success: boolean) => void) | null>(null);
+  const bankCardCallbackOverrideRef = useRef<((success: boolean) => void) | null>(null);
+  const paymentCancelledRef = useRef<boolean>(false);
 
-  // Функция для эмуляции вставки наличных
+  const [isCardPaymentActive, setIsCardPaymentActive] = useState(false);
+
   const startCashin = useCallback((callback: (amount: number) => void) => {
     cashInsertCallbackRef.current = callback;
     console.log(
@@ -28,14 +32,12 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     );
   }, []);
 
-  // Функция для остановки эмуляции вставки наличных
   const stopCashin = useCallback((callback: () => void) => {
     cashInsertCallbackRef.current = null;
     callback();
     console.log('🔵 Эмулятор: Режим приема наличных остановлен');
   }, []);
 
-  // Функция для эмуляции оплаты банковской картой
   const bankCardPurchase = useCallback(
     (
       amount: number,
@@ -45,6 +47,8 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       bankCardCallbackRef.current = callback;
       bankCardDisplayCallbackRef.current = displayCallback;
       displayCallback('Приложите карту к терминалу');
+      setIsCardPaymentActive(true);
+      paymentCancelledRef.current = false;
       console.log(
         `🔵 Эмулятор: Режим оплаты картой активирован на сумму ${amount}₽. Используйте пробел для приложения карты.`
       );
@@ -52,28 +56,31 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     []
   );
 
-  // Функция для отмены оплаты банковской картой
   const bankCardCancel = useCallback(() => {
     if (bankCardCallbackRef.current) {
-      bankCardCallbackRef.current(false);
+      paymentCancelledRef.current = true;
+      if (bankCardCallbackOverrideRef.current) {
+        bankCardCallbackOverrideRef.current(false);
+      } else {
+        bankCardCallbackRef.current(false);
+      }
       bankCardCallbackRef.current = null;
       bankCardDisplayCallbackRef.current = null;
+      setIsCardPaymentActive(false);
       console.log('🔵 Эмулятор: Оплата картой отменена');
     }
   }, []);
 
-  // Функция для эмуляции приготовления напитка
   const vend = useCallback((productIdx: number, callback: (success: boolean) => void) => {
     vendCallbackRef.current = callback;
+    setIsCardPaymentActive(false);
     console.log(
       `🔵 Эмулятор: Приготовление напитка #${productIdx} начато. Используйте Ctrl+P для успешного приготовления, Ctrl+E для ошибки`
     );
   }, []);
 
-  // Обработчики клавиатурных сокращений
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Эмуляция вставки наличных
       if (cashInsertCallbackRef.current) {
         if (e.key === '1') {
           cashInsertCallbackRef.current(1);
@@ -85,26 +92,45 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           cashInsertCallbackRef.current(10);
           console.log('🔵 Эмулятор: Вставлено 10₽');
         } else if (e.key === ' ') {
-          // пробел
           cashInsertCallbackRef.current(100);
           console.log('🔵 Эмулятор: Вставлено 100₽');
         }
       }
 
-      // Эмуляция оплаты картой
-      if (bankCardCallbackRef.current && e.key === ' ' && !cashInsertCallbackRef.current) {
-        console.log('🔵 Эмулятор: Карта приложена, оплата прошла успешно');
+      if (
+        isCardPaymentActive &&
+        bankCardCallbackRef.current &&
+        e.key === ' ' &&
+        !cashInsertCallbackRef.current
+      ) {
         if (bankCardDisplayCallbackRef.current) {
-          const callback = bankCardCallbackRef.current;
-          bankCardCallbackRef.current = null;
-          bankCardDisplayCallbackRef.current = null;
+          bankCardDisplayCallbackRef.current('Обработка платежа...');
+          console.log('🔵 Эмулятор: Карта приложена, перенаправление на экран обработки');
 
-          // Вызываем колбэк после очистки ссылок
-          callback(true);
+          const callback = bankCardCallbackRef.current;
+          const displayCallback = bankCardDisplayCallbackRef.current;
+
+          setTimeout(() => {
+            if (!paymentCancelledRef.current) {
+              if (displayCallback) {
+                displayCallback('Оплата успешна');
+              }
+              if (callback) {
+                if (bankCardCallbackOverrideRef.current) {
+                  bankCardCallbackOverrideRef.current(true);
+                } else {
+                  callback(true);
+                }
+                bankCardCallbackRef.current = null;
+                bankCardDisplayCallbackRef.current = null;
+              }
+              setIsCardPaymentActive(false);
+              console.log('🔵 Эмулятор: Оплата картой успешна');
+            }
+          }, PAYMENT_TIMEOUT_MS);
         }
       }
 
-      // Эмуляция приготовления напитка
       if (e.ctrlKey && vendCallbackRef.current) {
         if (e.key === 'p' || e.key === 'P') {
           const callback = vendCallbackRef.current;
@@ -129,18 +155,21 @@ export const EmulatorProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []); // Пустой массив зависимостей
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isCardPaymentActive]);
 
-  // Значение контекста эмулятора
   const emulatorValue: EmulatorInterface = {
     startCashin,
     stopCashin,
     bankCardPurchase,
     bankCardCancel,
     vend,
+    get bankCardCallbackOverride() {
+      return bankCardCallbackOverrideRef.current;
+    },
+    set bankCardCallbackOverride(callback: ((success: boolean) => void) | null) {
+      bankCardCallbackOverrideRef.current = callback;
+    }
   };
 
   return <EmulatorContext.Provider value={emulatorValue}>{children}</EmulatorContext.Provider>;

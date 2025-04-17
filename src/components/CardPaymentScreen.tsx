@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import { useDrink } from '../context/DrinkContext';
@@ -50,27 +50,10 @@ const CardPaymentScreen: React.FC = () => {
 
   // Состояния
   const [paymentMessage, setPaymentMessage] = useState(
-    // eslint-disable-next-line prettier/prettier
-    'Приложите карту к терминалу(пробел для эмуляции)'
+    'Приложите карту к терминалу (пробел для эмуляции)'
   );
   const [isProcessing, setIsProcessing] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-
-  // Мемоизируем функции с помощью useCallback, чтобы избежать их пересоздания при каждом рендере
-  const handlePaymentResult = useCallback(
-    (success: boolean) => {
-      if (success) {
-        // Сразу переходим на экран приготовления
-        navigate('/preparation');
-      }
-      setIsProcessing(false);
-    },
-    [navigate]
-  );
-
-  const handleDisplayMessage = useCallback((message: string) => {
-    setPaymentMessage(message);
-  }, []);
 
   // Эффект для проверки выбранного напитка и перенаправления
   useEffect(() => {
@@ -86,35 +69,50 @@ const CardPaymentScreen: React.FC = () => {
     }
   }, [shouldRedirect, navigate]);
 
-  // Эффект для запуска эмуляции оплаты картой при монтировании компонента
-  useEffect(() => {
-    // Если нужно перенаправить, не запускаем эмуляцию
+  // Обработчик сообщений от банковского терминала
+  const handleDisplayMessage = (message: string) => {
+    setPaymentMessage(message);
+
+    // Если сообщение "Обработка платежа...", то перенаправляем на экран обработки
+    if (message === 'Обработка платежа...') {
+      // Деактивируем колбэк перед переходом на экран обработки, чтобы он не вызывался дважды
+      navigate('/payment/processing');
+    }
+  };
+
+  // Обработчик начала процесса оплаты
+  const startPaymentProcess = () => {
     if (shouldRedirect || !selectedDrink) return;
 
     const totalPrice = calculateTotalPrice();
 
     // Начинаем эмуляцию оплаты
     setIsProcessing(true);
-    emulator.bankCardPurchase(totalPrice, handlePaymentResult, handleDisplayMessage);
+    emulator.bankCardPurchase(
+      totalPrice,
+      () => {
+        // Этот колбэк намеренно пустой, так как обработка будет в PaymentProcessingScreen
+      },
+      handleDisplayMessage
+    );
+  };
 
-    // Отменяем эмуляцию при размонтировании компонента
-    return () => {
-      emulator.bankCardCancel();
-    };
-  }, [
-    emulator,
-    calculateTotalPrice,
-    navigate,
-    selectedDrink,
-    shouldRedirect,
-    handlePaymentResult,
-    handleDisplayMessage,
-  ]);
+  // Эффект для запуска эмуляции оплаты картой при монтировании компонента
+  useEffect(() => {
+    // Если нужно перенаправить, не запускаем эмуляцию
+    if (shouldRedirect || !selectedDrink) return;
+
+    startPaymentProcess();
+
+    // Отменяем эмуляцию при размонтировании компонента (нет необходимости)
+  }, [selectedDrink, shouldRedirect]);
 
   // Обработчик отмены оплаты
   const handleCancel = () => {
+    // Отменяем процесс оплаты в эмуляторе
     emulator.bankCardCancel();
-    navigate('/payment');
+    // Переходим на экран неудачной оплаты
+    navigate('/payment/failed');
   };
 
   // Если нет выбранного напитка или происходит перенаправление
@@ -146,12 +144,7 @@ const CardPaymentScreen: React.FC = () => {
           </p>
           <p className="text-lg mb-8">Сумма: {calculateTotalPrice()}₽</p>
         </div>
-        <Button
-          variant="secondary"
-          onClick={handleCancel}
-          disabled={isProcessing}
-          className="w-full mb-0"
-        >
+        <Button variant="secondary" onClick={handleCancel} className="w-full mb-0">
           Отмена
         </Button>
       </div>

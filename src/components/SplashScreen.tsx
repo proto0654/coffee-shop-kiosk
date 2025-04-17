@@ -9,11 +9,12 @@ const SplashScreen: React.FC = () => {
   useEffect(() => {
     // Последовательные анимации
     const animationTimers = [
-      setTimeout(() => setAnimationStep(1), 300), // Появление фона
-      setTimeout(() => setAnimationStep(2), 600), // Появление зерен
-      setTimeout(() => setAnimationStep(3), 900), // Появление стаканчиков
-      setTimeout(() => setAnimationStep(4), 1200), // Появление текста
-      setTimeout(() => setAnimationStep(5), 1800), // Появление призыва к действию
+      setTimeout(() => setAnimationStep(1), 300),  // Появление фона
+      setTimeout(() => setAnimationStep(2), 600),  // Появление зерен
+      setTimeout(() => setAnimationStep(3), 900),  // Появление стаканчиков
+      setTimeout(() => setAnimationStep(4), 1500), // Появление текста
+      setTimeout(() => setAnimationStep(5), 2100), // Появление белого круга
+      setTimeout(() => setAnimationStep(6), 2700), // Появление призыва к действию
     ];
 
     // Очистка таймеров при размонтировании компонента
@@ -34,7 +35,7 @@ const SplashScreen: React.FC = () => {
 
       {/* Декоративные круги */}
       <div
-        className={`cta-bg absolute bottom-[-270px] right-[-170px] w-[500px] h-[500px] bg-white rounded-full z-20 transition-opacity duration-500 ease-in-out${animationStep >= 1 ? ' cta-visible' : ''}`}
+        className={`cta-bg absolute bottom-[-270px] right-[-170px] w-[500px] h-[500px] bg-white rounded-full z-20${animationStep >= 5 ? ' cta-visible' : ''}`}
       ></div>
 
       {/* Текст */}
@@ -109,7 +110,7 @@ const SplashScreen: React.FC = () => {
       )}
 
       {/* Призыв к действию */}
-      {animationStep >= 5 && (
+      {animationStep >= 6 && (
         <div className="absolute bottom-10 right-10 z-30 animate-[fade-in_1s_ease]">
           <p className="text-2xl font-medium text-center">
             Коснитесь
