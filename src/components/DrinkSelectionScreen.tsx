@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DrinkSelectionScreen.css';
 import Header from './Header';
 import { useDrink } from '../context/DrinkContext';
 import { SizeOption, Addon } from '../types/types';
+import LazyImage from './common/LazyImage';
+import { preloadCategoryImages, preloadProductImages } from '../utils/imagePreloader';
 
 const DrinkSelectionScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -25,6 +27,25 @@ const DrinkSelectionScreen: React.FC = () => {
   // Состояния для модальных окон
   const [showSizeModal, setShowSizeModal] = useState(false);
   const [showAddonsModal, setShowAddonsModal] = useState(false);
+
+  // Эффект для предзагрузки изображений
+  useEffect(() => {
+    // Предзагружаем изображения категорий
+    preloadCategoryImages().catch(err => console.error('Ошибка предзагрузки изображений категорий:', err));
+
+    // Собираем URLs всех продуктов из всех категорий
+    const allProductImages = [
+      ...drinks.coffee.map(drink => drink.image),
+      ...drinks.tea.map(drink => drink.image),
+      ...drinks.milkshake.map(drink => drink.image),
+      ...drinks.softDrinks.map(drink => drink.image)
+    ];
+
+    // Предзагружаем изображения продуктов
+    preloadProductImages(allProductImages).catch(err => 
+      console.error('Ошибка предзагрузки изображений продуктов:', err)
+    );
+  }, [drinks]);  // Зависимость от drinks
 
   // Получаем напитки в зависимости от выбранной категории
   const getDisplayedDrinks = () => {
@@ -155,7 +176,7 @@ const DrinkSelectionScreen: React.FC = () => {
           className={`category-tab ${selectedCategory === 'coffee' ? 'active' : ''}`}
           onClick={() => handleCategoryChange('coffee')}
         >
-          <img src={getCategoryImage('coffee')} alt="Кофе" className="category-icon" />
+          <LazyImage src={getCategoryImage('coffee')} alt="Кофе" className="category-icon" />
           <span className="category-name">Кофе</span>
           {selectedCategory === 'coffee' && <div className="indicator coffee"></div>}
         </div>
@@ -164,7 +185,7 @@ const DrinkSelectionScreen: React.FC = () => {
           className={`category-tab ${selectedCategory === 'tea' ? 'active' : ''}`}
           onClick={() => handleCategoryChange('tea')}
         >
-          <img src={getCategoryImage('tea')} alt="Чай" className="category-icon" />
+          <LazyImage src={getCategoryImage('tea')} alt="Чай" className="category-icon" />
           <span className="category-name">Чай</span>
           {selectedCategory === 'tea' && <div className="indicator tea"></div>}
         </div>
@@ -173,7 +194,7 @@ const DrinkSelectionScreen: React.FC = () => {
           className={`category-tab ${selectedCategory === 'milkshake' ? 'active' : ''}`}
           onClick={() => handleCategoryChange('milkshake')}
         >
-          <img
+          <LazyImage
             src={getCategoryImage('milkshake')}
             alt="Молочный коктейль"
             className="category-icon"
@@ -186,7 +207,7 @@ const DrinkSelectionScreen: React.FC = () => {
           className={`category-tab ${selectedCategory === 'softDrink' ? 'active' : ''}`}
           onClick={() => handleCategoryChange('softDrink')}
         >
-          <img
+          <LazyImage
             src={getCategoryImage('softDrink')}
             alt="Морсы и газ. напитки"
             className="category-icon"
@@ -209,7 +230,7 @@ const DrinkSelectionScreen: React.FC = () => {
           {displayedDrinks.map(drink => (
             <div key={drink.id} className="product-card" onClick={() => handleDrinkSelect(drink)}>
               <div className="product-image-container">
-                <img src={drink.image} alt={drink.name} className="product-image" />
+                <LazyImage src={drink.image} alt={drink.name} className="product-image" />
                 {drink.id === 2 && <div className="product-badge">2x</div>}
               </div>
               <h3 className="product-name">{drink.name}</h3>
@@ -253,7 +274,7 @@ const DrinkSelectionScreen: React.FC = () => {
             </div>
 
             <div className="drink-image-container">
-              <img
+              <LazyImage
                 src={selectedDrink.drink.image}
                 alt={selectedDrink.drink.name}
                 className="drink-image"
@@ -270,7 +291,7 @@ const DrinkSelectionScreen: React.FC = () => {
                   onClick={() => handleSizeSelect(size)}
                 >
                   <div className="cup-icon">
-                    <img src={`${process.env.PUBLIC_URL}/images/icons/cup.svg`} alt="Стакан" />
+                    <LazyImage src={`${process.env.PUBLIC_URL}/images/icons/cup.svg`} alt="Стакан" />
                   </div>
                   <div className="cup-size-info">
                     <div className="cup-size-value">{size.value} мл.</div>
